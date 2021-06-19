@@ -4,13 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CSS Quiz</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="reset.css"/>
 </head>
 <body>
-    
+    <div class = "wrapper">
+        <div id = "question-box" class = "hide">
+            <div id = "question-text">Question Text Here</div>
+            <div id = "choice-buttons"> 
+                <button class = "answer-choice-button" onclick = "checkAnswer()">
+                    <h1 id = "button-1">A</h1>
+                </button>
+                <button class = "answer-choice-button" onclick = "checkAnswer()">
+                    <h1 id = "button-2">B</h1>
+                </button>
+                <button class = "answer-choice-button" onclick = "checkAnswer()">
+                    <h1 id = "button-3">C</h1>
+                </button>
+                <button class = "answer-choice-button" onclick = "checkAnswer()">
+                    <h1 id = "button-4">D</h1>
+                </button>
 
+            </div>
+        </div>
+    </div>
+
+    <div class = "start-screen">
+        <h1 id = "start-title">CODING QUIZ!</h1>
+        <button id = "start-button">Start Game!</button>
+    </div>
+    
+    
     <script src="script.js"></script>
 </body>
 </html>
