@@ -1,6 +1,7 @@
 var startButton = document.getElementById("start-button");
 var questionContainer = document.getElementById("question-box");
 var startTitle = document.getElementById("start-title");
+var startInstructions = document.querySelector("p");
 var questionText = document.getElementById("question-text");
 var answerChoices = document.getElementsByClassName("answer-choice-button");
 
@@ -27,12 +28,14 @@ var questions = [
     }
 ]
 
+
 startButton.addEventListener("click", startGame);
 
 function startGame() {
     console.log("The game has started");
     startButton.classList.add("hide");
     startTitle.classList.add("hide");
+    startInstructions.classList.add("hide");
     questionContainer.classList.remove("hide");
     writeQuestion();
 }
@@ -61,21 +64,38 @@ function writeQuestion() {
 
     checkAnswer();
 }
+  
 
+function checkAnswer() {
+    
+        if (questions.correctAnswer === button1Text.clicked) {
+            console.log("This is correct");
+        } else {
+            console.log("This is incorrect");
+        }
+
+        if (questions.correctAnswer === button2Text.clicked) {
+            console.log("This is correct");
+        } else {
+            console.log("This is incorrect");
+        }
+
+        if (questions.correctAnswer === button3Text.clicked) {
+            console.log("This is correct");
+        } else {
+            console.log("This is incorrect");
+        }
+
+        if (questions.correctAnswer === button4Text.clicked) {
+            console.log("This is correct");
+        } else {
+            console.log("This is incorrect");
+        }
 
     
 
-function checkAnswer() {
-    if(answerChoices.clicked == true) {
-        console.log("This is registering a click");
-        if (questions.correctAnswer === answerChoices.clicked.textContent) {
-        console.log("This is correct");
-        }
-
-    }
-
-
 }
+
 
 function logScore() {
 

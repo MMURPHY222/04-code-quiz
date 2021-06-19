@@ -43,10 +43,10 @@ body {
 }
 
 #start-title{
-    padding:5px;
+    padding: 5px 0px 5px 10%;
     margin:5px;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     border-color:white;
     border-radius: 10px;
 }
@@ -54,6 +54,7 @@ body {
 #start-button{
     padding:5px;
     margin:5px;
+    margin-left: 20%;
     border-color:black;
     border-radius: 10px;
     background-color: lightslategray;
@@ -67,6 +68,13 @@ body {
     "button3 button4"
 }
 
+p {
+    background-color: white;
+    color: black;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
 .answer-choice-button:hover {
     background-color:black;
     border-color:lightslategray;
@@ -75,6 +83,26 @@ body {
 #start-button:hover {
     background-color:black;
     border-color:lightslategray;
+}
+
+@media only screen and (min-width: 992px) {
+    #start-title{
+        padding-left: 25%;
+    }
+
+    #start-button {
+        margin-left: 37%;
+    }
+}
+
+@media only screen and (max-width: 682px) {
+    #start-title{
+        padding-left: 15%;
+    }
+
+    #start-button {
+        margin-left: 25%;
+    }
 }
 
 
