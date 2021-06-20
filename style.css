@@ -31,7 +31,6 @@ body {
     margin:5px;
     border-color:black;
     border-radius: 10px;
-    display: block;
     background-color: lightslategray;
     color: white;
 }
@@ -75,6 +74,19 @@ p {
     border-radius: 5px;
 }
 
+#scores {
+    color: white;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+#timer {
+    grid-column-start:3;
+    grid-column-end:4;
+    color: white;
+    margin-left:80%;
+}
+
 .answer-choice-button:hover {
     background-color:black;
     border-color:lightslategray;
@@ -84,6 +96,7 @@ p {
     background-color:black;
     border-color:lightslategray;
 }
+
 
 @media only screen and (min-width: 992px) {
     #start-title{
