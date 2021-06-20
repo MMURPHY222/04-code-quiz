@@ -5,16 +5,23 @@ var startInstructions = document.querySelector("p");
 var questionText = document.getElementById("question-text");
 var answerChoices = document.getElementsByClassName("answer-choice-button");
 
+var buttonA = document.getElementById("button-a");
+var buttonB = document.getElementById("button-b");
+var buttonC = document.getElementById("button-c");
+var buttonD = document.getElementById("button-d");
+
 var button1Text = document.getElementById("button-1")
 var button2Text = document.getElementById("button-2")
 var button3Text = document.getElementById("button-3")
 var button4Text = document.getElementById("button-4")
 
+var i = 0;
+
 var questions = [
     {
         title: "What is 2*5",
-        choices: ["two", "ten", "three","four"],
-        correctAnswer: "two",
+        choices: ["two", "ten", "three", "four"],
+        correctAnswer: "ten",
     },
     {   
         title: "What is my favorite food",
@@ -27,6 +34,7 @@ var questions = [
         correctAnswer: "orange",
     }
 ]
+
 
 
 startButton.addEventListener("click", startGame);
@@ -42,59 +50,122 @@ function startGame() {
 
 function writeQuestion() {
 
-    questions.forEach(function(question) {
-        console.log(question.title);
-        questionText.textContent = question.title;
-     });
+    // questions.forEach(function(question, i)  {
 
-    questions.forEach(function(answer){
-        console.log(answer.choices);
+        console.log(questions[i].title);
+        questionText.textContent = questions[i].title; 
 
-        button1Text.textContent = answer.choices[0];
-        button2Text.textContent = answer.choices[1];
-        button3Text.textContent = answer.choices[2];
-        button4Text.textContent = answer.choices[3];
+        console.log(questions[i].choices);
+
+        button1Text.textContent = questions[i].choices[0];
+        button2Text.textContent = questions[i].choices[1];
+        button3Text.textContent = questions[i].choices[2];
+        button4Text.textContent = questions[i].choices[3];
 
         console.log(button1Text);
         console.log(button2Text);
         console.log(button3Text);
         console.log(button4Text);
         
-    });
+    
 
-    checkAnswer();
+    //   });
+
+    // questions.forEach(function(answer){
+    //     console.log(answer.choices);
+
+    //     button1Text.textContent = answer.choices[0];
+    //     button2Text.textContent = answer.choices[1];
+    //     button3Text.textContent = answer.choices[2];
+    //     button4Text.textContent = answer.choices[3];
+
+    //     console.log(button1Text);
+    //     console.log(button2Text);
+    //     console.log(button3Text);
+    //     console.log(button4Text);
+        
+    // });
+
+    // checkAnswer();
 }
+
+buttonA.addEventListener("click", checkAnswerA);
+buttonB.addEventListener("click", checkAnswerB);
+buttonC.addEventListener("click", checkAnswerC);
+buttonD.addEventListener("click", checkAnswerD);
+
   
 
-function checkAnswer() {
+function checkAnswerA() {
+
+    console.log("This is the correct answer" + questions[i].correctAnswer);
+    console.log("This is the content in the top left button" + buttonA.textContent);
     
-        if (questions.correctAnswer === button1Text.clicked) {
-            console.log("This is correct");
-        } else {
-            console.log("This is incorrect");
-        }
-
-        if (questions.correctAnswer === button2Text.clicked) {
-            console.log("This is correct");
-        } else {
-            console.log("This is incorrect");
-        }
-
-        if (questions.correctAnswer === button3Text.clicked) {
-            console.log("This is correct");
-        } else {
-            console.log("This is incorrect");
-        }
-
-        if (questions.correctAnswer === button4Text.clicked) {
-            console.log("This is correct");
-        } else {
-            console.log("This is incorrect");
-        }
-
+    // if (buttonA.textContent == questions[i].correctAnswer) {
+    //     console.log("YOU GOT IT RIGHT");
+    // } else {
+    //     console.log("YOU GOT IT WRONG");
+    // }
     
+     i ++;
+
+     writeQuestion();
 
 }
+
+function checkAnswerB() {
+
+    console.log("This is the correct answer" + questions[i].correctAnswer);
+    console.log("This is the content in the top right button" + buttonB.textContent);
+    
+    // if (buttonB.textContent == questions[i].correctAnswer) {
+    //     console.log("YOU GOT IT RIGHT");
+    // } else {
+    //     console.log("YOU GOT IT WRONG");
+    // }
+    
+     i ++;
+
+     writeQuestion();
+
+}
+
+function checkAnswerC() {
+
+    console.log("This is the correct answer" + questions[i].correctAnswer);
+    console.log("This is the content in the bottom left button" + buttonC.textContent);
+    
+    // if (buttonC.textContent == questions[i].correctAnswer) {
+    //     console.log("YOU GOT IT RIGHT");
+    // } else {
+    //     console.log("YOU GOT IT WRONG");
+    // }
+    
+     i ++;
+
+     writeQuestion();
+
+}
+
+function checkAnswerD() {
+
+    console.log("This is the correct answer" + questions[i].correctAnswer);
+    console.log("This is the content in the bottom left button" + buttonC.textContent);
+
+    // if (buttonD.textContent == questions[i].correctAnswer) {
+    //     console.log("YOU GOT IT RIGHT");
+    // } else {
+    //     console.log("YOU GOT IT WRONG");
+    // }
+    
+     i ++;
+
+     writeQuestion();
+
+}
+
+
+
 
 
 function logScore() {
