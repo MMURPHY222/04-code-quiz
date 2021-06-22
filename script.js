@@ -7,6 +7,8 @@ var answerChoices = document.getElementsByClassName("answer-choice-button");
 var time = document.getElementById("timer");
 var endGameText = document.getElementById("end-game"); 
 var finalTime = document.getElementById("final-time");
+var scores = document.getElementById("scores");
+var userInit = document.getElementById("init").value;
 
 // variables for button elements themselves 
 var buttonA = document.getElementById("button-a");
@@ -30,28 +32,28 @@ time.textContent = "Time: " + timer;
 // text will appear on, the values are assigned in html
 var questions = [
     {
-        title: "What is 2*5",
-        choices: ["two", "ten", "three", "four"],
+        title: "Within what HTML tags do we reference the javascript?",
+        choices: ["<link>", "<script>", "<src>", "<h1>"],
         correctAnswer: "B",
     },
     {   
-        title: "What is my favorite food",
-        choices: ["pasta", "seafood", "skittles", "roe"],
+        title: "How do you contain array elements within javascript?",
+        choices: ["{}", "[]", "()", "$$"],
         correctAnswer: "B",
     },
     {
-        title: "What is my favorite color?",
-        choices: ["orange", "blue", "yellow", "purple"],
+        title: "What function do you use to set a timer within javascript?",
+        choices: ["setInterval()", "makeTimer()", "timer()", "interval()"],
         correctAnswer: "A",
     },
     {
-        title: "Who is my favorite dog",
-        choices: ["Raisin", "Fig", "Percy", "Mila"],
+        title: "Within what HTML section to we reference the javascript?",
+        choices: ["head", "footer", "nav", "body"],
         correctAnswer: "D",
     },
     {
-        title: "What is the best seasoning",
-        choices: ["cinnamon", "oregano", "garlic", "curry powder"],
+        title: "How do you 'listen' for a click or other event within javascript",
+        choices: [".onClick", ".onEvent", ".addEventListener", "click.Listen"],
         correctAnswer: "C",
     }
 ]
@@ -224,8 +226,14 @@ function timerSubtract() {
 
 // this function logs the score(the timer value) when the person finished the game
 function logScore() {
+    localStorage.setItem("highScore", timer);
+    var storedScore = localStorage.getItem("highScore");
 
+    if (storedScore === null) {
 
+    } else {
+        scores.textContent = "High Score: " + storedScore + userInit;
+    }
 }
 
 // this function is the end of the game!
