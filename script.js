@@ -10,7 +10,7 @@ var endGameText = document.getElementById("end-game");
 var finalTime = document.getElementById("final-time");
 var scores = document.getElementById("scores");
 var submitBtn = document.getElementById("submit");
-// var userInit = document.getElementById("init").value;
+
 
 
 // variables for button elements themselves 
@@ -68,7 +68,6 @@ startButton.addEventListener("click", startGame);
 // adding class hide, applies them to the css class hide and display none
 // removing the hide class allows them to show
 function startGame() {
-    console.log("The game has started");
     startButton.classList.add("hide");
     startTitle.classList.add("hide");
     startInstructions.classList.add("hide");
@@ -84,31 +83,15 @@ function writeQuestion() {
 
         if (i === 5){
         endGame();
-        console.log("The game is overrrr " + i);
         }
 
-        console.log(questions[i].title);
         questionText.textContent = questions[i].title; 
 
-        console.log(questions[i].choices);
 
         button1Text.textContent = questions[i].choices[0];
         button2Text.textContent = questions[i].choices[1];
         button3Text.textContent = questions[i].choices[2];
         button4Text.textContent = questions[i].choices[3];
-
-        console.log(button1Text);
-        console.log(button2Text);
-        console.log(button3Text);
-        console.log(button4Text);
-
-        console.log(buttonA);
-        console.log(buttonB);
-        console.log(buttonC);
-        console.log(buttonD);
-        
-
-        console.log("This is i value " + i);
 
 }
 
@@ -125,14 +108,10 @@ buttonD.addEventListener("click", checkAnswerD);
 // that is currently displayed, they also call the writeQuestion function again after adding to i
 function checkAnswerA() {
 
-    console.log("This is the correct answer " + questions[i].correctAnswer);
-    console.log("This is the content in the top left button " + buttonA.value);
-    
-
     if (buttonA.value == questions[i].correctAnswer) {
-        console.log("YOU GOT IT RIGHT");
+        
     } else if (buttonA.value != questions[i].correctAnswer) {
-        console.log("YOU GOT IT WRONG");
+        
         timerSubtract();
     }
     
@@ -144,13 +123,10 @@ function checkAnswerA() {
 
 function checkAnswerB() {
 
-    console.log("This is the correct answer " + questions[i].correctAnswer);
-    console.log("This is the content in the top right button " + buttonB.value);
-    
     if (buttonB.value == questions[i].correctAnswer) {
-        console.log("YOU GOT IT RIGHT");
+        
     } else if (buttonB.value != questions[i].correctAnswer) {
-        console.log("YOU GOT IT WRONG");
+        
         timerSubtract();
     } 
     
@@ -163,13 +139,10 @@ function checkAnswerB() {
 
 function checkAnswerC() {
 
-    console.log("This is the correct answer " + questions[i].correctAnswer);
-    console.log("This is the content in the bottom left button " + buttonC.value);
-    
     if (buttonC.value == questions[i].correctAnswer) {
-        console.log("YOU GOT IT RIGHT");
+        
     } else if (buttonC.value != questions[i].correctAnswer) {
-        console.log("YOU GOT IT WRONG");
+        
         timerSubtract();
     }
     
@@ -182,13 +155,10 @@ function checkAnswerC() {
 
 function checkAnswerD() {
 
-    console.log("This is the correct answer " + questions[i].correctAnswer);
-    console.log("This is the content in the bottom left button " + buttonC.value);
-    
     if (buttonD.value == questions[i].correctAnswer) {
-        console.log("YOU GOT IT RIGHT");
+        
     } else if (buttonD.value != questions[i].correctAnswer){
-        console.log("YOU GOT IT WRONG");
+        
         timerSubtract();
     }
     
@@ -237,16 +207,11 @@ function logScore() {
 
     localStorage.setItem("highScore", timer);
     var storedScore = localStorage.getItem("highScore");
-    console.log(timer);
-    console.log(storedScore);
     
     localStorage.setItem("init", userInit);
     var storedInit = localStorage.getItem("init");
-    console.log(userInit);
-    console.log(storedInit);
 
-   
-    scores.textContent = "High score" + storedScore + storedInit;
+    scores.textContent("High score: ", storedInit + storedScore);
     
 }
 
