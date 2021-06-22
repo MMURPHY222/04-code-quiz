@@ -1,10 +1,12 @@
 var startButton = document.getElementById("start-button");
 var questionContainer = document.getElementById("question-box");
 var startTitle = document.getElementById("start-title");
-var startInstructions = document.querySelector("p");
+var startInstructions = document.getElementById("start-ins");
 var questionText = document.getElementById("question-text");
 var answerChoices = document.getElementsByClassName("answer-choice-button");
 var time = document.getElementById("timer");
+var endGameText = document.getElementById("end-game"); 
+var finalTime = document.getElementById("final-time");
 
 // variables for button elements themselves 
 var buttonA = document.getElementById("button-a");
@@ -202,12 +204,11 @@ function runTimer() {
 
         if (timer==0){
             clearInterval(myVar);
-            alert("Times up!");
         }
 
         if (i === 5){
             clearInterval(myVar);
-            alert("You completed the quiz!");
+            endGame();
         }
     
     }
@@ -221,7 +222,7 @@ function timerSubtract() {
 
 }
 
-// this function logs the score(the timer value) when teh person finished the game
+// this function logs the score(the timer value) when the person finished the game
 function logScore() {
 
 
@@ -230,4 +231,8 @@ function logScore() {
 // this function is the end of the game!
 function endGame() {
     logScore();
+    questionContainer.classList.add("hide");
+    endGameText.classList.remove("hide");
+    finalTime.textContent = timer;
+
 }
