@@ -4,6 +4,7 @@ var startTitle = document.getElementById("start-title");
 var startInstructions = document.querySelector("p");
 var questionText = document.getElementById("question-text");
 var answerChoices = document.getElementsByClassName("answer-choice-button");
+var time = document.getElementById("timer");
 
 var buttonA = document.getElementById("button-a");
 var buttonB = document.getElementById("button-b");
@@ -15,23 +16,26 @@ var button2Text = document.getElementById("button-2")
 var button3Text = document.getElementById("button-3")
 var button4Text = document.getElementById("button-4")
 
+var myVar 
 var i = 0;
+var timer = 5;
+time.textContent = "Time: " + timer;
 
 var questions = [
     {
         title: "What is 2*5",
         choices: ["two", "ten", "three", "four"],
-        correctAnswer: "ten",
+        correctAnswer: "B",
     },
     {   
         title: "What is my favorite food",
         choices: ["pasta", "seafood", "skittles", "roe"],
-        correctAnswer: "seafood",
+        correctAnswer: "B",
     },
     {
         title: "What is my favorite color?",
         choices: ["orange", "blue", "yellow", "purple"],
-        correctAnswer: "orange",
+        correctAnswer: "A",
     }
 ]
 
@@ -46,11 +50,12 @@ function startGame() {
     startInstructions.classList.add("hide");
     questionContainer.classList.remove("hide");
     writeQuestion();
+
+    var myVar = setInterval(runTimer,1000);
+    runTimer();
 }
 
 function writeQuestion() {
-
-    // questions.forEach(function(question, i)  {
 
         console.log(questions[i].title);
         questionText.textContent = questions[i].title; 
@@ -66,27 +71,11 @@ function writeQuestion() {
         console.log(button2Text);
         console.log(button3Text);
         console.log(button4Text);
-        
-    
 
-    //   });
-
-    // questions.forEach(function(answer){
-    //     console.log(answer.choices);
-
-    //     button1Text.textContent = answer.choices[0];
-    //     button2Text.textContent = answer.choices[1];
-    //     button3Text.textContent = answer.choices[2];
-    //     button4Text.textContent = answer.choices[3];
-
-    //     console.log(button1Text);
-    //     console.log(button2Text);
-    //     console.log(button3Text);
-    //     console.log(button4Text);
-        
-    // });
-
-    // checkAnswer();
+        console.log(buttonA);
+        console.log(buttonB);
+        console.log(buttonC);
+        console.log(buttonD);
 }
 
 buttonA.addEventListener("click", checkAnswerA);
@@ -98,16 +87,18 @@ buttonD.addEventListener("click", checkAnswerD);
 
 function checkAnswerA() {
 
-    console.log("This is the correct answer" + questions[i].correctAnswer);
-    console.log("This is the content in the top left button" + buttonA.textContent);
+    console.log("This is the correct answer " + questions[i].correctAnswer);
+    console.log("This is the content in the top left button " + buttonA.value);
     
-    // if (buttonA.textContent == questions[i].correctAnswer) {
-    //     console.log("YOU GOT IT RIGHT");
-    // } else {
-    //     console.log("YOU GOT IT WRONG");
-    // }
+
+    if (buttonA.value == questions[i].correctAnswer) {
+        console.log("YOU GOT IT RIGHT");
+    } else if (buttonA.value != questions[i].correctAnswer) {
+        console.log("YOU GOT IT WRONG");
+        timerSubtract();
+    }
     
-     i ++;
+    i ++;
 
      writeQuestion();
 
@@ -115,16 +106,18 @@ function checkAnswerA() {
 
 function checkAnswerB() {
 
-    console.log("This is the correct answer" + questions[i].correctAnswer);
-    console.log("This is the content in the top right button" + buttonB.textContent);
+    console.log("This is the correct answer " + questions[i].correctAnswer);
+    console.log("This is the content in the top right button " + buttonB.value);
     
-    // if (buttonB.textContent == questions[i].correctAnswer) {
-    //     console.log("YOU GOT IT RIGHT");
-    // } else {
-    //     console.log("YOU GOT IT WRONG");
-    // }
+    if (buttonB.value == questions[i].correctAnswer) {
+        console.log("YOU GOT IT RIGHT");
+    } else if (buttonB.value != questions[i].correctAnswer) {
+        console.log("YOU GOT IT WRONG");
+        timerSubtract();
+    } 
     
-     i ++;
+    i ++;
+    
 
      writeQuestion();
 
@@ -132,16 +125,18 @@ function checkAnswerB() {
 
 function checkAnswerC() {
 
-    console.log("This is the correct answer" + questions[i].correctAnswer);
-    console.log("This is the content in the bottom left button" + buttonC.textContent);
+    console.log("This is the correct answer " + questions[i].correctAnswer);
+    console.log("This is the content in the bottom left button " + buttonC.value);
     
-    // if (buttonC.textContent == questions[i].correctAnswer) {
-    //     console.log("YOU GOT IT RIGHT");
-    // } else {
-    //     console.log("YOU GOT IT WRONG");
-    // }
+    if (buttonC.value == questions[i].correctAnswer) {
+        console.log("YOU GOT IT RIGHT");
+    } else if (buttonC.value != questions[i].correctAnswer) {
+        console.log("YOU GOT IT WRONG");
+        timerSubtract();
+    }
     
-     i ++;
+    
+    i ++;
 
      writeQuestion();
 
@@ -149,31 +144,48 @@ function checkAnswerC() {
 
 function checkAnswerD() {
 
-    console.log("This is the correct answer" + questions[i].correctAnswer);
-    console.log("This is the content in the bottom left button" + buttonC.textContent);
-
-    // if (buttonD.textContent == questions[i].correctAnswer) {
-    //     console.log("YOU GOT IT RIGHT");
-    // } else {
-    //     console.log("YOU GOT IT WRONG");
-    // }
+    console.log("This is the correct answer " + questions[i].correctAnswer);
+    console.log("This is the content in the bottom left button " + buttonC.value);
     
-     i ++;
+    if (buttonD.value == questions[i].correctAnswer) {
+        console.log("YOU GOT IT RIGHT");
+    } else if (buttonD.value != questions[i].correctAnswer){
+        console.log("YOU GOT IT WRONG");
+        timerSubtract();
+    }
+    
+    
+    i ++;
 
      writeQuestion();
 
 }
 
+function stopTimer(){
+    clearInterval(myVar);
+}
 
 
+function runTimer() {
 
+    timer--;
+    time.textContent = "Time: " + timer;
 
-function logScore() {
-
+    if (timer===0){
+        stopTimer();
+    }
 
 }
 
-function timer() {
+
+function timerSubtract() {
+    timer = timer - 10;
+    time.textContent = "Time: " + timer;
+
+}
+
+
+function logScore() {
 
 
 }
