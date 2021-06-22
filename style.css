@@ -1,8 +1,10 @@
 
+/* display none (hides) whatever elements have a class of hide */
 .hide {
     display: none;
 }
 
+/* sets the body to display grid and gives it the awesome background */
 body {
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -11,6 +13,7 @@ body {
     font-family:Verdana, Tahoma, sans-serif;
 }
 
+/* contains the question text and answer buttons */
 .wrapper {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -35,6 +38,7 @@ body {
     color: white;
 }
 
+/* contains the start title and start buttons */
 .start-screen{
     grid-column-start: 2;
     grid-column-end: 3;
@@ -60,6 +64,7 @@ body {
     color: white;
 }
 
+/*sets the answer choice buttons to appear two by two*/
 #choice-buttons{
     display:grid;
     grid-template: 
@@ -87,6 +92,7 @@ p {
     margin-left:80%;
 }
 
+/* changes color when buttons are hovered over */
 .answer-choice-button:hover {
     background-color:black;
     border-color:lightslategray;
@@ -97,7 +103,7 @@ p {
     border-color:lightslategray;
 }
 
-
+/* makes document responsive to various screen size */
 @media only screen and (min-width: 992px) {
     #start-title{
         padding-left: 25%;

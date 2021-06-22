@@ -6,21 +6,26 @@ var questionText = document.getElementById("question-text");
 var answerChoices = document.getElementsByClassName("answer-choice-button");
 var time = document.getElementById("timer");
 
+// variables for button elements themselves 
 var buttonA = document.getElementById("button-a");
 var buttonB = document.getElementById("button-b");
 var buttonC = document.getElementById("button-c");
 var buttonD = document.getElementById("button-d");
 
+// These are the variables for the text header elements within the buttons
 var button1Text = document.getElementById("button-1")
 var button2Text = document.getElementById("button-2")
 var button3Text = document.getElementById("button-3")
 var button4Text = document.getElementById("button-4")
 
-
+// i is used to move through questions, timer sets the starting time value
 var i = 0;
 var timer = 100;
 time.textContent = "Time: " + timer;
 
+// array of objects containing all questions, answer choices, and correct answers
+// the correctAnswer A,B,C,D align with the value assigned to the button that the correct
+// text will appear on, the values are assigned in html
 var questions = [
     {
         title: "What is 2*5",
@@ -36,13 +41,24 @@ var questions = [
         title: "What is my favorite color?",
         choices: ["orange", "blue", "yellow", "purple"],
         correctAnswer: "A",
+    },
+    {
+        title: "Who is my favorite dog",
+        choices: ["Raisin", "Fig", "Percy", "Mila"],
+        correctAnswer: "D",
+    },
+    {
+        title: "What is the best seasoning",
+        choices: ["cinnamon", "oregano", "garlic", "curry powder"],
+        correctAnswer: "C",
     }
 ]
 
-
-
+// calls the function startGame on the startButton click
 startButton.addEventListener("click", startGame);
 
+// adding class hide, applies them to the css class hide and display none
+// removing the hide class allows them to show
 function startGame() {
     console.log("The game has started");
     startButton.classList.add("hide");
@@ -53,7 +69,15 @@ function startGame() {
     runTimer();
 }
 
+// this function writes the questions and the answers to the screen, i is referring to
+// the array in reference and i is added to after each question is checked
+// runs the function endGame when i = 5 which is after the last question is answered
 function writeQuestion() {
+
+        if (i === 5){
+        endGame();
+        console.log("The game is overrrr " + i);
+        }
 
         console.log(questions[i].title);
         questionText.textContent = questions[i].title; 
@@ -74,15 +98,23 @@ function writeQuestion() {
         console.log(buttonB);
         console.log(buttonC);
         console.log(buttonD);
+        
+
+        console.log("This is i value " + i);
+
 }
 
+// each button has an event listener for a click and on click will run a seperate
+// function to check the answer
 buttonA.addEventListener("click", checkAnswerA);
 buttonB.addEventListener("click", checkAnswerB);
 buttonC.addEventListener("click", checkAnswerC);
 buttonD.addEventListener("click", checkAnswerD);
 
   
-
+// the check answer functions are all the same except for the button they are referencing
+// they check to see if the value of button A is equal to the correctAnswer of the question
+// that is currently displayed, they also call the writeQuestion function again after adding to i
 function checkAnswerA() {
 
     console.log("This is the correct answer " + questions[i].correctAnswer);
@@ -159,11 +191,8 @@ function checkAnswerD() {
 
 }
 
-function stopTimer(){
-    clearInterval(myVar);
-}
-
-
+// This function runs the timer, stops it when its equal to zero, and stops it after the last
+// question is answered
 function runTimer() {
     var myVar = setInterval(myClock,1000);
 
@@ -175,19 +204,30 @@ function runTimer() {
             clearInterval(myVar);
             alert("Times up!");
         }
+
+        if (i === 5){
+            clearInterval(myVar);
+            alert("You completed the quiz!");
+        }
+    
     }
 
 }
 
-
+// this function subtracts 10 from timer, it is called when a user answers incorrectly
 function timerSubtract() {
     timer = timer - 10;
     time.textContent = "Time: " + timer;
 
 }
 
-
+// this function logs the score(the timer value) when teh person finished the game
 function logScore() {
 
 
+}
+
+// this function is the end of the game!
+function endGame() {
+    logScore();
 }
