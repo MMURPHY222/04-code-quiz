@@ -16,9 +16,9 @@ var button2Text = document.getElementById("button-2")
 var button3Text = document.getElementById("button-3")
 var button4Text = document.getElementById("button-4")
 
-var myVar 
+
 var i = 0;
-var timer = 5;
+var timer = 100;
 time.textContent = "Time: " + timer;
 
 var questions = [
@@ -50,8 +50,6 @@ function startGame() {
     startInstructions.classList.add("hide");
     questionContainer.classList.remove("hide");
     writeQuestion();
-
-    var myVar = setInterval(runTimer,1000);
     runTimer();
 }
 
@@ -167,12 +165,16 @@ function stopTimer(){
 
 
 function runTimer() {
+    var myVar = setInterval(myClock,1000);
 
-    timer--;
-    time.textContent = "Time: " + timer;
+    function myClock() {
+        timer--;
+        time.textContent = "Time: " + timer;
 
-    if (timer===0){
-        stopTimer();
+        if (timer==0){
+            clearInterval(myVar);
+            alert("Times up!");
+        }
     }
 
 }
