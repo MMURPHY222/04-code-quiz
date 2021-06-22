@@ -1,3 +1,4 @@
+// grabbing various elements from HTML doc, most often text elements that get overwritten 
 var startButton = document.getElementById("start-button");
 var questionContainer = document.getElementById("question-box");
 var startTitle = document.getElementById("start-title");
@@ -8,7 +9,9 @@ var time = document.getElementById("timer");
 var endGameText = document.getElementById("end-game"); 
 var finalTime = document.getElementById("final-time");
 var scores = document.getElementById("scores");
-var userInit = document.getElementById("init").value;
+var submitBtn = document.getElementById("submit");
+// var userInit = document.getElementById("init").value;
+
 
 // variables for button elements themselves 
 var buttonA = document.getElementById("button-a");
@@ -26,6 +29,7 @@ var button4Text = document.getElementById("button-4")
 var i = 0;
 var timer = 100;
 time.textContent = "Time: " + timer;
+
 
 // array of objects containing all questions, answer choices, and correct answers
 // the correctAnswer A,B,C,D align with the value assigned to the button that the correct
@@ -108,7 +112,7 @@ function writeQuestion() {
 
 }
 
-// each button has an event listener for a click and on click will run a seperate
+// each button has an event listener for a click and on click will run a separate
 // function to check the answer
 buttonA.addEventListener("click", checkAnswerA);
 buttonB.addEventListener("click", checkAnswerB);
@@ -206,6 +210,7 @@ function runTimer() {
 
         if (timer==0){
             clearInterval(myVar);
+            endGame();
         }
 
         if (i === 5){
@@ -224,23 +229,30 @@ function timerSubtract() {
 
 }
 
+submitBtn.addEventListener("click", logScore);
+
 // this function logs the score(the timer value) when the person finished the game
 function logScore() {
+    var userInit = document.getElementById("init").value;
+
     localStorage.setItem("highScore", timer);
     var storedScore = localStorage.getItem("highScore");
+    console.log(timer);
+    console.log(storedScore);
+    
+    localStorage.setItem("init", userInit);
+    var storedInit = localStorage.getItem("init");
+    console.log(userInit);
+    console.log(storedInit);
 
-    if (storedScore === null) {
-
-    } else {
-        scores.textContent = "High Score: " + storedScore + userInit;
-    }
+   
+    scores.textContent = "High score" + storedScore + storedInit;
+    
 }
 
 // this function is the end of the game!
 function endGame() {
-    logScore();
     questionContainer.classList.add("hide");
     endGameText.classList.remove("hide");
     finalTime.textContent = timer;
-
 }

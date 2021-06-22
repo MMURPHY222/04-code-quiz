@@ -62,6 +62,7 @@ function runTimer() {
         time.textContent = "Time: " + timer;
         if (timer==0){
             clearInterval(myVar);
+            endGame();
         }
         if (i === 5){
             clearInterval(myVar);
@@ -71,6 +72,6 @@ function runTimer() {
 }
 ```
 
-This function allows the timer to stop if it equals zero or if i is equal to 5. I will be equal to 5 after the last question is answered. So this stops the timer when that occurs and runs the endGame function. 
+This function allows the timer to stop if it equals zero or if i is equal to 5. the variable i will be equal to 5 after the last question is answered. So this stops the timer when that occurs and runs the endGame function. 
 
 The endGame function logs the score (timer) to local storage, hides the question container, and removes the hide class from a form that allows the user to input their initials. 
